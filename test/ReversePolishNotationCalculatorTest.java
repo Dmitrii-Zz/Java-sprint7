@@ -2,10 +2,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+//Хорошие тесты=) общее покрытие: Class - 100% Method - 100% Line - 100% - ты молодец!
+//Хорошая практика выносить классы тестирования в отдельный путь с названием test помеченных соответствующим образом
+//можно объединять несколько проверок схожего функционала в одном тесте - так нагляднее и компактнее
+//не хватает проверки на присутсвие более чем одного пробела в нотации
+//я бы добавил еще проверки для всех действий с переполнением значений. Калькулятор ограничен пределом int
+//и было бы неплохо посмотреть как он себя поведет при переполнении
+
+
 public class ReversePolishNotationCalculatorTest {
 
     private static ReversePolishNotationCalculator reversePolishNotationCalculator;
 
+    //достаточно выполнить один раз @BeforeAll - класс ReversePolishNotationCalculator не имеет полей
+    //и его состояние при выполнении любого типа операций не будет изменяться
     @BeforeEach
     public void beforeEach() {
 
@@ -21,6 +31,7 @@ public class ReversePolishNotationCalculatorTest {
         assertEquals(expectedResult, factResult);
     }
 
+    //Нужно переименовать shouldCalculateAdditionMinus -> shouldCalculateSubtraction
     @Test
     public void shouldCalculateAdditionMinus() {
 
@@ -30,6 +41,8 @@ public class ReversePolishNotationCalculatorTest {
         assertEquals(expectedResult, factResult);
     }
 
+    //тоже для shouldCalculateAdditionNegativeNumberUmn1 -> shouldCalculateMultiplication
+    //Addition - сложение с англ названия следующих методов могут быть непонятны
     @Test
     public void shouldCalculateAdditionNegativeNumberUmn1() {
 
